@@ -1,0 +1,5 @@
+{"level":"DEBUG","time":"2021-11-09T18:15:12.554+0800","caller":"BlueBell/main.go:39","msg":"logger init success..\n"}
+{"level":"INFO","time":"2021-11-09T18:15:31.009+0800","caller":"logger/logger.go:71","msg":"/","status":200,"method":"GET","path":"/","query":"","ip":"::1","user-agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/95.0.4638.69 Safari/537.36 Edg/95.0.1020.44","errors":"","cost":0}
+{"level":"INFO","time":"2021-11-09T18:15:31.066+0800","caller":"logger/logger.go:71","msg":"/favicon.ico","status":404,"method":"GET","path":"/favicon.ico","query":"","ip":"::1","user-agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/95.0.4638.69 Safari/537.36 Edg/95.0.1020.44","errors":"","cost":0}
+{"level":"INFO","time":"2021-11-09T18:15:46.317+0800","caller":"BlueBell/main.go:85","msg":"Shutdown Server ..."}
+{"level":"INFO","time":"2021-11-09T18:15:46.332+0800","caller":"BlueBell/main.go:94","msg":"Server exiting"}
