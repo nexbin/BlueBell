@@ -70,6 +70,7 @@ func Init() (err error) {
 			zap.L().Error("viper.Unmarshal() failed", zap.Error(err))
 		}
 		fmt.Printf("%s changed..\n", in.Name)
+		fmt.Println(GlobalConfig.MysqlConfig.DbName)
 	})
 	return
 }

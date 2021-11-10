@@ -1,6 +1,7 @@
 package main
 
 import (
+	"BlueBell/controllers"
 	"BlueBell/dao/mysql"
 	"BlueBell/dao/redis"
 	"BlueBell/logger"
@@ -56,6 +57,11 @@ func main() {
 	if err := snowflake.Init(settings.GlobalConfig.StartTime, settings.GlobalConfig.MachineId); err != nil {
 		fmt.Printf("init snowflake failed, err: %v\n", err)
 		return
+	}
+
+	// 初始化gin内置的validator使用的翻译器
+	if err := controllers.InitTrans("zh"); err != nil {
+		fmt.Printf("init validator translator failed, err: %v\n", err)
 	}
 
 	// 5. register router

@@ -1,8 +1,8 @@
-name: "web_demo"
+name: "BlueBell"
 mode: "dev"
 port: 8090
 
-start_time : "2021-11-01"
+start_time : "2021-11-10"
 machine_id : 1
 
 log:
@@ -17,7 +17,7 @@ mysql:
   port: 3306
   user: "root"
   password: "xlsf0205"
-  dbname: "web_app"
+  dbname: "blue_bell"
   max_open_conn: 200
   max_idle_conn: 50
 
