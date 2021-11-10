@@ -32,7 +32,7 @@ func main() {
 	}
 
 	// 2. init log
-	if err := logger.Init(settings.GlobalConfig.LogConfig); err != nil {
+	if err := logger.Init(settings.GlobalConfig.LogConfig, settings.GlobalConfig.Mode); err != nil {
 		fmt.Printf("init logger failed, err: %v\n", err)
 		return
 	}
