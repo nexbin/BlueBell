@@ -4,18 +4,13 @@ import (
 	"BlueBell/dao/mysql"
 	"BlueBell/models"
 	"BlueBell/pkg/snowflake"
-	"errors"
 	"go.uber.org/zap"
 )
 
 // UserSignUp 用户注册逻辑
 func UserSignUp(p *models.ParamSignUp) (err error) {
 	// 1. 判断用户存不存在
-	if isExist, err := mysql.CheckUserExist(p.Username); isExist {
-		return errors.New("用户已存在")
-	} else if err != nil {
-		// 数据库查询出错
-		zap.L().Error("Check user exist failed,", zap.Error(err))
+	if err = mysql.CheckUserExist(p.Username); err != nil {
 		return err
 	}
 	// 2. 生成UID
