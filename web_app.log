@@ -126,3 +126,35 @@
 {"level":"INFO","time":"2021-11-10T19:37:32.689+0800","caller":"logger/logger.go:79","msg":"/signup","status":200,"method":"GET","path":"/signup","query":"","ip":"::1","user-agent":"PostmanRuntime/7.28.4","errors":"","cost":0.0048613}
 {"level":"INFO","time":"2021-11-10T19:37:35.866+0800","caller":"BlueBell/main.go:91","msg":"Shutdown Server ..."}
 {"level":"INFO","time":"2021-11-10T19:37:35.881+0800","caller":"BlueBell/main.go:100","msg":"Server exiting"}
+{"level":"DEBUG","time":"2021-11-11T15:26:06.465+0800","caller":"BlueBell/main.go:40","msg":"logger init success..\n"}
+{"level":"INFO","time":"2021-11-11T15:26:12.193+0800","caller":"BlueBell/main.go:91","msg":"Shutdown Server ..."}
+{"level":"INFO","time":"2021-11-11T15:26:12.203+0800","caller":"BlueBell/main.go:100","msg":"Server exiting"}
+{"level":"DEBUG","time":"2021-11-11T15:26:23.332+0800","caller":"BlueBell/main.go:40","msg":"logger init success..\n"}
+{"level":"ERROR","time":"2021-11-11T15:27:25.894+0800","caller":"controllers/user.go:72","msg":"用户登录失败","error":"该用户不存在"}
+{"level":"INFO","time":"2021-11-11T15:27:25.894+0800","caller":"logger/logger.go:79","msg":"/login","status":200,"method":"GET","path":"/login","query":"","ip":"::1","user-agent":"PostmanRuntime/7.28.4","errors":"","cost":0.0641281}
+{"level":"ERROR","time":"2021-11-11T15:27:44.519+0800","caller":"controllers/user.go:72","msg":"用户登录失败","error":"该用户不存在"}
+{"level":"INFO","time":"2021-11-11T15:27:44.519+0800","caller":"logger/logger.go:79","msg":"/login","status":200,"method":"GET","path":"/login","query":"","ip":"::1","user-agent":"PostmanRuntime/7.28.4","errors":"","cost":0.0051667}
+{"level":"INFO","time":"2021-11-11T15:28:25.827+0800","caller":"BlueBell/main.go:91","msg":"Shutdown Server ..."}
+{"level":"INFO","time":"2021-11-11T15:28:25.842+0800","caller":"BlueBell/main.go:100","msg":"Server exiting"}
+{"level":"DEBUG","time":"2021-11-11T15:28:28.432+0800","caller":"BlueBell/main.go:40","msg":"logger init success..\n"}
+{"level":"ERROR","time":"2021-11-11T15:28:33.177+0800","caller":"controllers/user.go:72","msg":"用户登录失败","error":"scannable dest type ptr with >1 columns (3) in result"}
+{"level":"INFO","time":"2021-11-11T15:28:33.178+0800","caller":"logger/logger.go:79","msg":"/login","status":200,"method":"GET","path":"/login","query":"","ip":"::1","user-agent":"PostmanRuntime/7.28.4","errors":"","cost":0.0062409}
+{"level":"INFO","time":"2021-11-11T15:32:13.600+0800","caller":"BlueBell/main.go:91","msg":"Shutdown Server ..."}
+{"level":"INFO","time":"2021-11-11T15:32:13.612+0800","caller":"BlueBell/main.go:100","msg":"Server exiting"}
+{"level":"DEBUG","time":"2021-11-11T15:32:16.131+0800","caller":"BlueBell/main.go:40","msg":"logger init success..\n"}
+{"level":"INFO","time":"2021-11-11T15:32:21.806+0800","caller":"logger/logger.go:79","msg":"/login","status":200,"method":"GET","path":"/login","query":"","ip":"::1","user-agent":"PostmanRuntime/7.28.4","errors":"","cost":0.0044114}
+{"level":"ERROR","time":"2021-11-11T15:32:25.628+0800","caller":"controllers/user.go:72","msg":"用户登录失败","error":"登录失败，密码不一致"}
+{"level":"INFO","time":"2021-11-11T15:32:25.629+0800","caller":"logger/logger.go:79","msg":"/login","status":200,"method":"GET","path":"/login","query":"","ip":"::1","user-agent":"PostmanRuntime/7.28.4","errors":"","cost":0.0051462}
+{"level":"ERROR","time":"2021-11-11T15:32:32.145+0800","caller":"controllers/user.go:72","msg":"用户登录失败","error":"该用户不存在"}
+{"level":"INFO","time":"2021-11-11T15:32:32.146+0800","caller":"logger/logger.go:79","msg":"/login","status":200,"method":"GET","path":"/login","query":"","ip":"::1","user-agent":"PostmanRuntime/7.28.4","errors":"","cost":0.0049092}
+{"level":"ERROR","time":"2021-11-11T15:33:13.464+0800","caller":"controllers/user.go:61","msg":"Login with invalid param","error":"Key: 'ParamLogin.password' Error:Field validation for 'password' failed on the 'required' tag"}
+{"level":"INFO","time":"2021-11-11T15:33:13.465+0800","caller":"logger/logger.go:79","msg":"/login","status":200,"method":"GET","path":"/login","query":"","ip":"::1","user-agent":"PostmanRuntime/7.28.4","errors":"","cost":0.0010539}
+{"level":"ERROR","time":"2021-11-11T15:33:37.726+0800","caller":"controllers/user.go:72","msg":"用户登录失败","error":"该用户不存在"}
+{"level":"INFO","time":"2021-11-11T15:33:37.727+0800","caller":"logger/logger.go:79","msg":"/login","status":200,"method":"GET","path":"/login","query":"","ip":"::1","user-agent":"PostmanRuntime/7.28.4","errors":"","cost":0.0042592}
+{"level":"INFO","time":"2021-11-11T15:35:24.852+0800","caller":"BlueBell/main.go:91","msg":"Shutdown Server ..."}
+{"level":"INFO","time":"2021-11-11T15:35:24.862+0800","caller":"BlueBell/main.go:100","msg":"Server exiting"}
+{"level":"DEBUG","time":"2021-11-11T15:35:27.508+0800","caller":"BlueBell/main.go:40","msg":"logger init success..\n"}
+{"level":"ERROR","time":"2021-11-11T15:35:31.258+0800","caller":"controllers/user.go:72","msg":"用户登录失败","error":"nexbin2:该用户不存在"}
+{"level":"INFO","time":"2021-11-11T15:35:31.258+0800","caller":"logger/logger.go:79","msg":"/login","status":200,"method":"GET","path":"/login","query":"","ip":"::1","user-agent":"PostmanRuntime/7.28.4","errors":"","cost":0.005737}
+{"level":"INFO","time":"2021-11-11T15:36:29.908+0800","caller":"BlueBell/main.go:91","msg":"Shutdown Server ..."}
+{"level":"INFO","time":"2021-11-11T15:36:29.920+0800","caller":"BlueBell/main.go:100","msg":"Server exiting"}

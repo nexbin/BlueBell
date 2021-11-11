@@ -18,5 +18,8 @@ func Setup() *gin.Engine {
 	// 处理注册
 	r.GET("/signup", controllers.SignUpHandler)
 
+	// 用户登录
+	r.GET("/login", controllers.LoginHandler)
+
 	return r
 }

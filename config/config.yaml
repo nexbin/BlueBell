@@ -1,5 +1,5 @@
 name: "BlueBell"
-mode: "release"
+mode: "dev"
 port: 8090
 
 start_time : "2021-11-10"

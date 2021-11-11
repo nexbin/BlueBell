@@ -3,7 +3,10 @@ package mysql
 import (
 	"BlueBell/models"
 	"crypto/md5"
+	"database/sql"
 	"encoding/hex"
+	"errors"
+	"fmt"
 )
 
 // 把每一步数据库操作封装成函数
@@ -29,8 +32,27 @@ func InsertUser(u *models.User) (err error) {
 	return
 }
 
+// encryptPwd 密码加密
 func encryptPwd(pwd string) string {
 	h := md5.New()
 	h.Write([]byte("nexbin.com")) // 加盐字符串
 	return hex.EncodeToString(h.Sum([]byte(pwd)))
+}
+
+// Login 查找username所对应的password
+func Login(u *models.User) error {
+	// 将用户名所对应的信息从数据库中取出
+	oPwd := u.Password
+	sqlStr := `select user_id, username, password from user where username = ?`
+	err := db.Get(u, sqlStr, u.Username)
+	if err == sql.ErrNoRows {
+		return errors.New(fmt.Sprintf("%s:该用户不存在", u.Username))
+	} else if err != nil {
+		return err
+	}
+	// 数据库中的密码和输入的密码进行比对
+	if encryptPwd(oPwd) != u.Password {
+		return errors.New("登录失败，密码不一致")
+	}
+	return nil
 }
