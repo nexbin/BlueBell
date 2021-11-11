@@ -3,6 +3,7 @@ package logic
 import (
 	"BlueBell/dao/mysql"
 	"BlueBell/models"
+	"BlueBell/pkg/jwt"
 	"BlueBell/pkg/snowflake"
 	"go.uber.org/zap"
 )
@@ -30,10 +31,15 @@ func UserSignUp(p *models.ParamSignUp) (err error) {
 }
 
 // UserLogin 用户登录逻辑
-func UserLogin(u *models.ParamLogin) error {
+func UserLogin(u *models.ParamLogin) (string, error) {
 	user := &models.User{
 		Username: u.Username,
 		Password: u.Password,
 	}
-	return mysql.Login(user)
+	// 传递的是指针，可以在里面取到userid
+	if err := mysql.Login(user); err != nil {
+		return "", err
+	}
+	// 生成JWT
+	return jwt.GenToken(user.UserId, user.Username)
 }

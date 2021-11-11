@@ -10,6 +10,9 @@ const (
 	CodeInvalidPwd
 	CodeServerBusy
 	UnExceptionCode
+
+	CodeInvalidToken
+	CodeNeedLogin
 )
 
 var (
@@ -21,6 +24,9 @@ var (
 		CodeInvalidPwd:   "无效的密码",
 		CodeServerBusy:   "伺服器繁忙",
 		UnExceptionCode:  "意外的情况",
+
+		CodeInvalidToken: "无效的Token",
+		CodeNeedLogin:    "需要登录",
 	}
 )
 
