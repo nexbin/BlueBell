@@ -16,11 +16,16 @@ func Setup() *gin.Engine {
 		c.String(http.StatusOK, "ok!")
 	})
 
+	api := r.Group("/api")
+	{
+		v1 := api.Group("/v1")
+		{
+			// 用户登录
+			v1.POST("/login", controllers.LoginHandler)
+		}
+	}
 	// 处理注册
 	r.POST("/signup", controllers.SignUpHandler)
-
-	// 用户登录
-	r.POST("/login", controllers.LoginHandler)
 
 	// 测试Token
 	r.GET("/ping", middleware.JWTAuthorizationMiddleware(), func(c *gin.Context) {

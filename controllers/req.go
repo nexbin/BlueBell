@@ -7,7 +7,8 @@ import (
 
 var (
 	ErrorUserNotLogin = errors.New("用户未登录")
-	ContextUserIdKey  = "userId"
+
+	ContextUserIdKey = "userId"
 )
 
 func GetCurrentUserId(c *gin.Context) (int64, error) {
