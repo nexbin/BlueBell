@@ -12,29 +12,29 @@ func Setup() *gin.Engine {
 	r := gin.New()
 	r.Use(logger.GinLogger(), logger.GinRecovery(true))
 
-	r.GET("/", func(c *gin.Context) {
-		c.String(http.StatusOK, "ok!")
-	})
-
-	api := r.Group("/api")
+	v1 := r.Group("/api/v1")
 	{
-		v1 := api.Group("/v1")
+		// 用户登录
+		v1.POST("/login", controllers.LoginHandler)
+		// 处理注册
+		v1.POST("/signup", controllers.SignUpHandler)
+
+		v1.Use(middleware.JWTAuthorizationMiddleware())
 		{
-			// 用户登录
-			v1.POST("/login", controllers.LoginHandler)
-			// 处理注册
-			v1.POST("/signup", controllers.SignUpHandler)
+			// 获取社区列表
+			v1.GET("/community", controllers.CommunityHandler)
+			// 根据id获取社区具体信息
+			v1.GET("/community/:id", controllers.CommunityDetailHandler)
+
+			// 发布帖子
+			v1.POST("/post", controllers.CreatePostHandler)
 		}
 	}
 
-	// 测试Token
-	r.GET("/ping", middleware.JWTAuthorizationMiddleware(), func(c *gin.Context) {
-		// 如果是登录的用户,判断当前用户是否是登录的用户（请求头中是否有有效的jwtToken）
-		_, exists := c.Get("userId")
-		if exists {
-			c.String(http.StatusOK, "hello,token carrays.\n")
-		}
-		// 否则
+	r.NoRoute(func(c *gin.Context) {
+		c.JSON(http.StatusOK, gin.H{
+			"msg": 404,
+		})
 	})
 
 	return r

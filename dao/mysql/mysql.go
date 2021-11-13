@@ -14,7 +14,7 @@ var db *sqlx.DB
 func Init(config *settings.MysqlConfig) (err error) {
 	// 也可以使用 sqlx.MustConnect()
 	db, err = sqlx.Connect("mysql",
-		fmt.Sprintf("%s:%s@tcp(%s:%d)/%s",
+		fmt.Sprintf("%s:%s@tcp(%s:%d)/%s?parseTime=true&loc=Local",
 			config.User,
 			config.Password,
 			config.Host,
