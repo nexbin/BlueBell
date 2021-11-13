@@ -22,10 +22,10 @@ func Setup() *gin.Engine {
 		{
 			// 用户登录
 			v1.POST("/login", controllers.LoginHandler)
+			// 处理注册
+			v1.POST("/signup", controllers.SignUpHandler)
 		}
 	}
-	// 处理注册
-	r.POST("/signup", controllers.SignUpHandler)
 
 	// 测试Token
 	r.GET("/ping", middleware.JWTAuthorizationMiddleware(), func(c *gin.Context) {
