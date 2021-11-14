@@ -28,6 +28,10 @@ func Setup() *gin.Engine {
 
 			// 发布帖子
 			v1.POST("/post", controllers.CreatePostHandler)
+			// 帖子详情，点击帖子，进入
+			v1.GET("/post/:id", controllers.GetPostDetailHandler)
+			// 获取帖子列表
+			v1.GET("/posts", controllers.GetPostList)
 		}
 	}
 
