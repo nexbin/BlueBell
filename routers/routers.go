@@ -32,6 +32,9 @@ func Setup() *gin.Engine {
 			v1.GET("/post/:id", controllers.GetPostDetailHandler)
 			// 获取帖子列表
 			v1.GET("/posts", controllers.GetPostList)
+
+			// 用户投票
+			v1.POST("/vote", controllers.PostVoteHandler)
 		}
 	}
 

@@ -12,6 +12,7 @@ var (
 	ContextUserIdKey = "userId"
 )
 
+// GetCurrentUserId 根据用户id获取用户信息
 func GetCurrentUserId(c *gin.Context) (int64, error) {
 	id, ok := c.Get(ContextUserIdKey)
 	if !ok {
@@ -24,6 +25,7 @@ func GetCurrentUserId(c *gin.Context) (int64, error) {
 	return userId, nil
 }
 
+// GetPageSegInfo 获取分页信息
 func GetPageSegInfo(c *gin.Context) (offset, limit int64) {
 	var err error
 	offsetStr := c.Query("offset")

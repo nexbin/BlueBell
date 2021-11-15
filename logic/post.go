@@ -2,14 +2,21 @@ package logic
 
 import (
 	"BlueBell/dao/mysql"
+	"BlueBell/dao/redis"
 	"BlueBell/models"
 	"BlueBell/pkg/snowflake"
+	"fmt"
 	"go.uber.org/zap"
 )
 
 func CreatePost(post *models.Post) error {
 	// 生成帖子id
 	post.Id = snowflake.GenInt64Id()
+	// 保存到redis
+	err := redis.CreatePost(fmt.Sprintf("%d", post.Id))
+	if err != nil {
+		return err
+	}
 	// 保存到数据库
 	return mysql.CreatePost(post)
 	// 返回

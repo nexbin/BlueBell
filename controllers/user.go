@@ -5,6 +5,7 @@ import (
 	"BlueBell/logic"
 	"BlueBell/models"
 	"errors"
+	"fmt"
 	"github.com/gin-gonic/gin"
 	"github.com/go-playground/validator/v10"
 	"go.uber.org/zap"
@@ -59,7 +60,7 @@ func LoginHandler(c *gin.Context) {
 		return
 	}
 	// 2.业务逻辑处理
-	token, err := logic.UserLogin(u)
+	user, err := logic.UserLogin(u)
 	if err != nil {
 		zap.L().Error("用户登录失败", zap.Error(err))
 		if errors.Is(err, mysql.ErrorUserNotExist) {
@@ -72,5 +73,9 @@ func LoginHandler(c *gin.Context) {
 		return
 	}
 	// 3.返回响应，返回token
-	ResponseSuccess(c, token)
+	ResponseSuccess(c, gin.H{
+		"user_id":   fmt.Sprintf("%d", user.UserId), // 前端能识别的 < (1 << 53) - 1
+		"user_name": user.Username,
+		"token":     user.Token,
+	})
 }

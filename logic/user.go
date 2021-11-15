@@ -31,15 +31,20 @@ func UserSignUp(p *models.ParamSignUp) (err error) {
 }
 
 // UserLogin 用户登录逻辑
-func UserLogin(u *models.ParamLogin) (string, error) {
-	user := &models.User{
+func UserLogin(u *models.ParamLogin) (user *models.User, err error) {
+	user = &models.User{
 		Username: u.Username,
 		Password: u.Password,
 	}
 	// 传递的是指针，可以在里面取到userid
 	if err := mysql.Login(user); err != nil {
-		return "", err
+		return nil, err
 	}
 	// 生成JWT
-	return jwt.GenToken(user.UserId, user.Username)
+	token, err := jwt.GenToken(user.UserId, user.Username)
+	if err != nil {
+		return nil, err
+	}
+	user.Token = token
+	return
 }
