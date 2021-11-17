@@ -31,8 +31,9 @@ func Setup() *gin.Engine {
 			// 帖子详情，点击帖子，进入
 			v1.GET("/post/:id", controllers.GetPostDetailHandler)
 			// 获取帖子列表
-			v1.GET("/posts", controllers.GetPostList)
-
+			v1.GET("/posts", controllers.GetPostListHandler)
+			// 根据时间或者分数获取帖子列表
+			v1.GET("/posts2", controllers.GetPostListHandler2)
 			// 用户投票
 			v1.POST("/vote", controllers.PostVoteHandler)
 		}

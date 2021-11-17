@@ -1,2 +1,2 @@
-###
-BlueBell仿reddit.
+### BlueBell 仿 Reddit 项目
+

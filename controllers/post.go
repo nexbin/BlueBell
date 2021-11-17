@@ -54,8 +54,8 @@ func GetPostDetailHandler(c *gin.Context) {
 	ResponseSuccess(c, postDetail)
 }
 
-// GetPostList 获取帖子列表
-func GetPostList(c *gin.Context) {
+// GetPostListHandler 获取帖子列表
+func GetPostListHandler(c *gin.Context) {
 	// 从数据库立取出帖子（获取数据）
 	// 实现分页
 	offset, limit := GetPageSegInfo(c)
@@ -68,3 +68,60 @@ func GetPostList(c *gin.Context) {
 	// 返回响应
 	ResponseSuccess(c, data)
 }
+
+// GetPostListHandler2 获取帖子列表升级版
+// 按时间或者分数排序
+// 根据前端传来的参数（按分数、按创建时间 排序）动态获取帖子列表
+// 1. 获取参数
+// 2. 去redis查询id列表
+// 3. 根据id去数据库查询详细信息
+// 4. 返回响应
+func GetPostListHandler2(c *gin.Context) {
+	// 1. 获取请求参数
+	p := &models.ParamPostList{
+		Offset: 1,
+		Limit:  10,
+		Order:  models.OrderTime,
+	} // 默认值
+	if err := c.ShouldBindQuery(p); err != nil {
+		zap.L().Error("get post list handler2 with invalid param")
+		ResponseError(c, CodeInvalidParam)
+		return
+	}
+	// 2. 数据查询
+	list, err := logic.GetPostListNew(p)
+	if err != nil {
+		zap.L().Error("logic.GetPostList2 failed", zap.Error(err))
+		ResponseError(c, CodeServerBusy)
+		return
+	}
+	// 3.返回响应
+	ResponseSuccess(c, list)
+}
+
+// CommunityPostListHandler 获取当前社区对应的帖子信息
+//func CommunityPostListHandler(c *gin.Context) {
+//	// 1. 获取请求参数
+//	p := &models.ParamCommunityPostList{
+//		CommunityId: 0,
+//		ParamPostList: &models.ParamPostList{
+//			Offset: 1,
+//			Limit:  10,
+//			Order:  models.OrderTime,
+//		},
+//	} // 默认值
+//	if err := c.ShouldBindQuery(p); err != nil {
+//		zap.L().Error("get community post list handler with invalid param")
+//		ResponseError(c, CodeInvalidParam)
+//		return
+//	}
+//	// 2. 数据查询
+//	list, err := logic.GetCommunityPostList(p)
+//	if err != nil {
+//		zap.L().Error("logic.GetCommunityPostList failed", zap.Error(err))
+//		ResponseError(c, CodeServerBusy)
+//		return
+//	}
+//	// 3.返回响应
+//	ResponseSuccess(c, list)
+//}

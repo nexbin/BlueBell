@@ -15,7 +15,8 @@ type Post struct {
 
 // ApiPostDetail 帖子详情接口的结构体
 type ApiPostDetail struct {
-	AuthorName       string
+	AuthorName       string             `json:"author_name"`
+	SupportNum       int64              `json:"support_num"`
 	*Post                               // 嵌入帖子结构体
 	*CommunityDetail `json:"community"` // 社区信息
 }
